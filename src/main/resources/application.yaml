@@ -1,0 +1,51 @@
+server:
+  port: 8761
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: http://user-service:8080
+          predicates:
+            - Path=/users/**
+  application:
+          name: demo
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  zipkin:
+    baseUrl: http://localhost:9411
+hibernate:
+  cache:
+        use_second_level_cache: true
+        region:
+          factory_class=org:
+            hibernate:
+              cache:
+                jcache:
+                  internal: JCacheRegionFactory
+        use_query_cache: true
+  generate_statistics: true
+  javax:
+    cache:
+      uri: ehcache.xml
+      provider: org.ehcache.jsr107.EhcacheCachingProvider
+      use_query_cache: true
+#spring:
+#  application:
+#    name: spring-cloud-eureka-client
+  instance:
+    preferIpAddress: true
+#spring:
+#  application:
+#    name: spring-cloud-eureka-feign-client
+#server:
+#  port: 8080
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}

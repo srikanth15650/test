@@ -1,0 +1,70 @@
+
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd"
+         updateCheck="false" monitoring="autodetect"
+         dynamicConfig="true">
+
+    <!-- Default Cache Configuration -->
+    <defaultCache
+            maxEntriesLocalHeap="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="300"
+            memoryStoreEvictionPolicy="LRU"
+            transactionalMode="off">
+    </defaultCache>
+
+    <!-- Custom Cache Configuration -->
+    <cache
+            name="userCache"
+            maxEntriesLocalHeap="5000"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="600"
+            memoryStoreEvictionPolicy="LFU"
+            transactionalMode="off">
+    </cache>
+
+    <cache
+            name="productCache"
+            maxEntriesLocalHeap="1000"
+            eternal="true"
+            memoryStoreEvictionPolicy="FIFO"
+            transactionalMode="off">
+    </cache>
+
+    <!-- Disk Store Configuration -->
+    <diskStore path="java.io.tmpdir/ehcache"/>
+
+    <!-- Cache Manager Event Listeners -->
+    <cacheManagerPeerListenerFactory
+            class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+            properties="hostName=localhost, port=40001"/>
+
+    <!-- Cache Manager Peer Provider -->
+    <cacheManagerPeerProviderFactory
+            class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+            properties="peerDiscovery=automatic, multicastGroupAddress=230.0.0.1, multicastGroupPort=4446"/>
+
+    <cache-template name="entities">
+        <resources>
+            <heap unit="entries">1000</heap>
+        </resources>
+    </cache-template>
+
+    <cache
+            alias="com.example.demo.Foo"
+            uses-template="entities">
+    </cache>
+
+
+    <cache alias="default-update-timestamps-region">
+        <expiry>
+            <none />
+        </expiry>
+        <resources>
+            <heap unit="entries">1000</heap>
+        </resources>
+    </cache>
+</ehcache>
+
