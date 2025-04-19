@@ -15,25 +15,25 @@ public class InsertionSort {
 
     }
 
-    public void insertionSort2(int[] nums){
-        for(int i=0;i<nums.length;i++){
-            int redPointer = i-1;
-            int tempValue = nums[i];
-            while(redPointer>=0 && nums[redPointer]>nums[redPointer+1]){
-
-                nums[redPointer+1] = nums[redPointer];
-            }
-            nums[redPointer]=tempValue;
-        }
-    }
-
-    public void insertionSort3(int[] nums){
-        for(int i=0;i<nums.length;i++){
-            int redPointer= i-1;
-            while(redPointer>=0 && nums[redPointer+1]<nums[redPointer]){
-                nums[redPointer+1]=nums[redPointer];
-            }
-            nums[redPointer]=nums[i];
-        }
-    }
+//    public void insertionSort2(int[] nums){
+//        for(int i=0;i<nums.length;i++){
+//            int redPointer = i-1;
+//            int tempValue = nums[i];
+//            while(redPointer>=0 && nums[redPointer]>nums[redPointer+1]){
+//
+//                nums[redPointer+1] = nums[redPointer];
+//            }
+//            nums[redPointer]=tempValue;
+//        }
+//    }
+//
+//    public void insertionSort3(int[] nums){
+//        for(int i=0;i<nums.length;i++){
+//            int redPointer= i-1;
+//            while(redPointer>=0 && nums[redPointer+1]<nums[redPointer]){
+//                nums[redPointer+1]=nums[redPointer];
+//            }
+//            nums[redPointer]=nums[i];
+//        }
+//    }
 }
