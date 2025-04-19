@@ -52,8 +52,9 @@
         </resources>
     </cache-template>
 
-    <cache
-            alias="com.example.demo.Foo"
+    <cache>
+<!--            alias="com.example.demo.Foo"-->
+    alias="Foo"
             uses-template="entities">
     </cache>
 
