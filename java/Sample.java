@@ -183,7 +183,7 @@ public class Sample {
 
 
     @GetMapping("/hello")
-    public @ResponseBody Flux<String> idempotentMethod11(@RequestParam(defaultValue = "Guest") String name) {
+    public @ResponseBody Flux<String> IdempotentMethod11(@RequestParam(defaultValue = "Guest") String name) {
         return Flux.just("Hello", "from", "Spring", "WebFlux!");
     }
 
@@ -195,20 +195,20 @@ public class Sample {
     }
 
     @PutMapping("/hello4")
-    public @ResponseBody Flux<String> idempotentMethod() {
+    public @ResponseBody Flux<String> IdempotentMethod() {
         //update a resource in database
         return Flux.just("Hello", "from", "Spring", "WebFlux!");
     }
 
 
     @DeleteMapping("/hello3/{id}")
-    public @ResponseBody Flux<String> idempotentMethod2(@PathVariable String id) {
+    public @ResponseBody Flux<String> IdempotentMethod2(@PathVariable String id) {
         //delete a resource in database
         return Flux.just("Hello", "from", "Spring", "WebFlux!");
     }
 
     @PatchMapping("/user/{id:[0-9]+}")
-    public @ResponseBody Flux<String> nonIdempotentMethod4(@PathVariable("id") String id) {
+    public @ResponseBody Flux<String> IdempotentMethod4(@PathVariable("id") String id) {
         //patch a resource in databasea
         return Flux.just("Hello", "from", "Spring", "WebFlux!");
     }
